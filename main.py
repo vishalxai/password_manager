@@ -34,17 +34,17 @@ def save():
         messagebox.showwarning(title="Oops",message="Please don't leave any field empty !")
     else:
         try:
-            with open("data.json","r")as data_file :
+            with open("test_data.json", "r")as data_file :
                 #load existing data
                 data = json.load(data_file)
         except FileNotFoundError:
             #create new file if it doenst exist
-            with open("data.json", "w") as data_file:
+            with open("test_data.json", "w") as data_file:
                 json.dump(new_data,data_file,indent=4)
         else:
             #updata existing data with new entries
-            data.updata(new_data)
-            with open("data.json", "w") as data_file:
+            data.update(new_data)
+            with open("test_data.json", "w") as data_file:
                 json.dump(data, data_file, indent=4)
         finally:
             website_entry.delete(0,END)
